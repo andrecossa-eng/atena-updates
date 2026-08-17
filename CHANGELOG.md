@@ -4,6 +4,22 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-08-17
+
+- Histórico persistente dos comandos executados no equipamento (antes só aparecia na
+  tela, sem ficar registrado).
+- Depois que a ATENA pergunta uma confirmação de comando por voz, ela já entra ouvindo
+  a resposta — sem precisar chamar "ATENA" de novo só pra dizer sim ou não.
+- Conexão MQTT criptografada (TLS/SSL) corrigida e testada de ponta a ponta, incluindo
+  suporte a certificado próprio pra brokers com certificado autoassinado.
+- Ao importar um arquivo 3D com várias peças de uma montagem, o equipamento já nasce
+  com o nome do arquivo em vez do nome genérico.
+- Confirmação de alterações não salvas ao fechar o app, criar um projeto novo ou abrir
+  outro — evita perder configuração sem querer.
+- Janela de mapeamento de movimento (cinemática) não perde mais as configurações ao
+  trocar de peça, e agora distingue sinal digital (liga/desliga) de analógico
+  automaticamente, sem exigir isso do operador.
+
 ## 2026-08-12
 
 - Importação de múltiplos objetos `.obj` de uma vez no viewer 3D.
