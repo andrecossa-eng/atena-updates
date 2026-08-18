@@ -4,6 +4,28 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-08-18
+
+- Projetos agora salvam com extensão própria (`.atp`) em vez de aproveitar o `.json`
+  genérico — projetos antigos continuam abrindo normalmente.
+- Ferramentas novas no viewer 3D: **rotacionar** peça individual ou o equipamento
+  inteiro com o mouse, e **isolar** uma peça específica escondendo o resto da montagem
+  pra examinar ela sem distração.
+- Peças que só reportam estado por sensor (ex.: um sensor de temperatura) não precisam
+  mais fingir ter um movimento configurado só pra funcionar — agora dá pra marcar "sem
+  movimento" direto.
+- Alertas proativos ficaram mais úteis: em vez de citar o nome técnico do sensor/tópico
+  cru, a ATENA agora descreve o que está acontecendo em linguagem natural e já sugere
+  causas prováveis e um próximo passo, usando a documentação técnica do equipamento
+  como referência. Continua avisando normalmente mesmo se a IA estiver indisponível.
+- Novo grupo "Manutenção": histórico consolidado de comandos executados e alertas,
+  geração de Ordem de Serviço e relatório da planta, tudo a um clique.
+- Vários ajustes de interface e correções: ícones mais nítidos e com cor nas ações
+  principais, indicadores de status como badges coloridos, árvore de equipamentos não
+  fecha mais um item sozinha ao abrir outro, cor de alerta de uma peça não some mais ao
+  trocar/adicionar peças, e o aviso de "alterações não salvas" não dispara mais em falso
+  logo depois de abrir um projeto que já estava salvo.
+
 ## 2026-08-17
 
 - Histórico persistente dos comandos executados no equipamento (antes só aparecia na
