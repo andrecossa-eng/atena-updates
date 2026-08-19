@@ -25,6 +25,12 @@ quem quiser acompanhar de fora.
   selecionado no momento.
 - Botões dedicados de mutar microfone e voz da ATENA, no lugar do texto de status; novo
   botão pra recolher o painel de chat/voz e ganhar mais espaço pro ambiente 3D.
+- Ajuste fino na recuperação de estado ao reconectar: antes, se algo mudasse no
+  equipamento *enquanto o app estava desconectado* do broker (por exemplo, um alarme
+  passar do limite nesse intervalo), isso só aparecia quando chegasse a próxima leitura
+  depois de reconectar — podia demorar bastante, ou nunca acontecer. Agora a ATENA
+  recupera certinho tudo que aconteceu nesse meio tempo, não só o último estado salvo
+  antes de cair a conexão.
 
 ## 2026-08-18
 
