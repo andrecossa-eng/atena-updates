@@ -4,6 +4,28 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-08-19
+
+- Novidade grande: a ATENA agora percebe padrões de comportamento fora do normal em
+  qualquer sensor ou equipamento (motor, sensor de proximidade, esteira...), mesmo sem
+  nenhuma faixa de alerta configurada — compara o histórico recente de um sinal com o
+  que é normal pra ele mesmo, e já sugere uma causa provável e uma ação, do mesmo jeito
+  que já fazia pros alertas de faixa min/max.
+- Reconectar ao broker MQTT (ou só reabrir um projeto) agora recupera o último estado
+  conhecido da planta, em vez de deixar tudo em branco até a próxima leitura chegar.
+- Dois avisos falados em sequência não se atropelam mais — cada um espera o anterior
+  terminar antes de começar.
+- Renomear/remover peças e equipamentos passou a ser feito direto pelo botão direito na
+  árvore de equipamentos; a aba antiga dedicada a isso foi incorporada à aba principal.
+- Mapeamento cinemático (relação tópico -> peça/equipamento) virou geral pra planta
+  inteira, em vez de precisar reconfigurar equipamento por equipamento — e agora vive
+  junto da tabela de vínculos MQTT, num lugar só.
+- Comandos e alertas MQTT também passaram a valer pra planta inteira, com o dono de
+  cada tópico decidido pelo mapeamento já existente, não por qual equipamento está
+  selecionado no momento.
+- Botões dedicados de mutar microfone e voz da ATENA, no lugar do texto de status; novo
+  botão pra recolher o painel de chat/voz e ganhar mais espaço pro ambiente 3D.
+
 ## 2026-08-18
 
 - Projetos agora salvam com extensão própria (`.atp`) em vez de aproveitar o `.json`
