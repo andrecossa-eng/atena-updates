@@ -10,15 +10,15 @@
 ## O que é
 
 A ATENA é um aplicativo desktop que dá "voz" a um equipamento industrial: ela lê a
-telemetria em tempo real (MQTT), mostra um viewer 3D do equipamento e conversa com o
-operador — por texto ou por voz, respondendo ao nome "ATENA" — usando um modelo de
-linguagem (Gemini) que entende o contexto do equipamento e pode, com a confirmação do
-operador, acionar comandos reais.
+telemetria em tempo real (MQTT ou Modbus TCP), mostra um viewer 3D do equipamento e
+conversa com o operador — por texto ou por voz, respondendo ao nome "ATENA" — usando
+um modelo de linguagem (Gemini) que entende o contexto do equipamento e pode, com a
+confirmação do operador, acionar comandos reais.
 
 Projeto de TCC em Engenharia de Controle e Automação. O equipamento usado como
 referência no desenvolvimento é um cilindro pneumático com sensores M12, mas a ideia é
-que a mesma aplicação sirva qualquer equipamento com sensores/atuadores MQTT — basta
-trocar o projeto configurado.
+que a mesma aplicação sirva qualquer equipamento com sensores/atuadores MQTT ou Modbus
+TCP — basta trocar o projeto configurado.
 
 ## Destaques
 
