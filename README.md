@@ -15,9 +15,7 @@ conversa com o operador — por texto ou por voz, respondendo ao nome "ATENA" �
 um modelo de linguagem (Gemini) que entende o contexto do equipamento e pode, com a
 confirmação do operador, acionar comandos reais.
 
-Projeto de TCC em Engenharia de Controle e Automação. O equipamento usado como
-referência no desenvolvimento é um cilindro pneumático com sensores M12, mas a ideia é
-que a mesma aplicação sirva qualquer equipamento com sensores/atuadores MQTT ou Modbus
+Projeto de TCC em Engenharia de Controle e Automação. A ideia é que sirva qualquer equipamento com sensores/atuadores MQTT ou Modbus
 TCP — basta trocar o projeto configurado.
 
 ## Destaques
