@@ -22,6 +22,8 @@ trocar o projeto configurado.
 
 ## Destaques
 
+- **MQTT e Modbus TCP** — fala com o equipamento por qualquer um dos dois
+  protocolos, escolhido por projeto, sem precisar de gateway/bridge no meio.
 - **Assistente de voz com wake word** — "ATENA" ativa a escuta, resposta com voz neural.
 - **Ações reais só com confirmação** — a IA pode propor um comando, mas nada é
   publicado no equipamento sem o operador confirmar explicitamente.

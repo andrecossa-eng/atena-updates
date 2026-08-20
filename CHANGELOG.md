@@ -4,6 +4,27 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-08-20
+
+- Suporte a **Modbus TCP** além de MQTT — um projeto agora fala com o equipamento por
+  qualquer um dos dois protocolos, escolhido na tela de conexão. Cobre praticamente
+  todo CLP industrial, inclusive os sem suporte nativo a MQTT, sem precisar de
+  gateway/bridge no meio.
+- O detector de comportamento anômalo passou a comparar o **tempo real entre
+  mudanças** de um sinal, não só se ele mudou — agora também pega corretamente sinais
+  digitais/binários (sensores indutivos, fins de curso...) mudando de estado
+  erraticamente, caso que antes passava despercebido.
+- Projeto `.atp` ficou portátil: os modelos 3D agora vão embutidos dentro do próprio
+  arquivo do projeto, então abrir num PC diferente (ou sem os arquivos originais por
+  perto) continua carregando tudo normalmente.
+- "Isolar" no viewer 3D agora isola um equipamento inteiro de uma vez, além de uma
+  peça só.
+- Vários ajustes de estabilidade na conexão Modbus e na interface: um registrador com
+  endereço/tipo mal configurado não derruba mais a conexão inteira (só avisa e segue
+  lendo os outros normalmente), reabrir a janela de conexão repetidamente não quebra
+  mais, e a lista de tópicos sugeridos nos formulários atualiza na hora, sem precisar
+  salvar primeiro.
+
 ## 2026-08-19
 
 - Novidade grande: a ATENA agora percebe padrões de comportamento fora do normal em
