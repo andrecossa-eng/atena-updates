@@ -4,6 +4,37 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-08-21
+
+- Reduziu bastante o tempo de resposta de alarmes e da fala em geral: a IA agora fala
+  frase por frase conforme vai gerando a resposta, em vez de esperar a resposta
+  inteira terminar pra só então começar a falar — com a próxima frase já sendo
+  preparada em paralelo enquanto a atual toca, sem pausa perceptível entre elas.
+- Identificado (e cortado) o maior gargalo escondido: o modelo de IA vinha gastando
+  tempo "pensando" antes de responder mesmo em avisos curtos — desativar isso sozinho
+  já cortou a maior parte do atraso. Só foi seguro fazer isso depois de resolver outro
+  problema primeiro: a documentação técnica de *todos* os equipamentos carregados no
+  projeto entrava junto em cada pergunta/aviso, mesmo quando não tinha nada a ver —
+  o que já tinha causado a IA misturar informação do datasheet errado numa resposta
+  sobre outro sensor. Agora só entra o manual relevante pro equipamento/sensor em
+  questão.
+- Alarme novo (não a recuperação "voltou ao normal") sempre entra com "Atenção
+  Operador:" no começo da fala — tanto na resposta da IA quanto no aviso de segurança
+  determinístico, caso a IA esteja indisponível — e ganhou um bipe sonoro antes de
+  falar, além de prioridade na fila de voz: um alarme corta uma resposta de chat comum
+  que estiver tocando, em vez de esperar ela terminar.
+- Ainda em validação: os ganhos de tempo foram medidos direto contra a API de
+  produção, mas a experiência real de ouvir no dia a dia (ausência de pausa entre
+  frases, naturalidade da fala em sequência) ainda precisa de mais uso real —
+  planejado pro fim de semana.
+
+**Nos planos, ainda não implementado:** detecção da palavra de ativação ("ATENA")
+rodando localmente, sem depender de reconhecimento de voz na nuvem só pra isso, e
+reconhecimento direto de comandos já configurados no projeto sem precisar passar pela
+IA quando a frase do operador bate com um comando conhecido. Os dois inspirados em
+como assistentes tipo Alexa conseguem responder tão rápido — processamento local pro
+que é simples/fechado, IA só pro que exige entendimento livre de fato.
+
 ## 2026-08-20
 
 - Suporte a **Modbus TCP** além de MQTT — um projeto agora fala com o equipamento por
