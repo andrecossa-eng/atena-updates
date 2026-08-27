@@ -4,6 +4,29 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-08-27
+
+- A palavra de ativação ("ATENA") e os comandos já cadastrados no projeto agora são
+  reconhecidos **localmente, offline** — exatamente o que tinha ficado nos planos da
+  atualização anterior. Um modelo de reconhecimento de voz pequeno roda na própria
+  máquina, restrito a um vocabulário fechado (a wake word, ou os nomes dos comandos do
+  projeto atual): quando a fala bate com algo conhecido, nem o reconhecimento de voz
+  na nuvem nem a IA chegam a ser chamados — vai direto pro mesmo fluxo de confirmação
+  sim/não de sempre, antes de acionar qualquer coisa no equipamento real. Só uma
+  pergunta livre de verdade ainda passa pelo caminho de nuvem (voz + IA).
+- Corrigido um atraso real no aviso sonoro de alarme: o bipe só tocava depois que a IA
+  terminasse de gerar a primeira frase da análise falada — alguns segundos de "alarme
+  mudo" antes do próprio bipe, o que ia contra o propósito de um aviso instantâneo.
+  Agora ele toca na hora em que o alerta é percebido, em paralelo com a análise sendo
+  gerada. A fala em si não ficou mais rápida — só o bipe parou de esperar por ela.
+- Ainda não validado com uso real: só o roteamento da lógica foi testado, não a
+  precisão do reconhecimento de voz local em ambiente com ruído de fábrica, sotaque ou
+  microfone mais distante — planejado pra essa semana.
+
+**Nos planos, ainda não implementado:** reduzir a demora até a IA de fato começar a
+falar (tempo até o modelo gerar a primeira frase + tempo de conexão da síntese de
+voz), que segue igual — a correção desta rodada só adiantou o bipe, não a fala.
+
 ## 2026-08-21
 
 - Reduziu bastante o tempo de resposta de alarmes e da fala em geral: a IA agora fala
