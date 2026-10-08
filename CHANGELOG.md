@@ -4,6 +4,25 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-10-08
+
+- **Comandos cadastrados agora são 100% locais**, sem IA e sem nuvem. Digitar no chat o
+  nome exato de um comando vai direto para a confirmação, sem consultar a IA, e o "sim"
+  ou "não" falado passa a ser reconhecido offline quando há algo pendente (se o
+  reconhecimento local não entender, cai no reconhecimento em nuvem como antes). Também
+  foi corrigido um detalhe que impedia o reconhecimento offline de casar nomes de
+  comando com mais de uma palavra.
+- Novo: cada comando pode ser marcado para **executar sem pedir confirmação**, pensado
+  para ações de baixo risco. Só vale quando o operador diz ou digita o nome exato do
+  comando; comando proposto pela IA continua sempre exigindo confirmação.
+- Reconhecimento de voz ajustado para não cortar o comando no meio: pausa maior antes de
+  encerrar a captura e limiar de microfone fixo e mais tolerante a fala baixa, com
+  ajuste fino por variável de ambiente e registro no log para calibrar com uso real.
+  Ainda não validado em ambiente real de uso.
+- A saída de áudio da ATENA agora pode ser escolhida (útil com fone Bluetooth pareado,
+  que vira o dispositivo padrão do Windows e desviava a voz do alto-falante), e o
+  programa registra qual saída está usando.
+
 ## 2026-10-07
 
 - **Validação com CLP real.** A ATENA foi testada de ponta a ponta com um CLP Altus
