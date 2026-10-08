@@ -4,6 +4,67 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-10-07
+
+- **Validação com CLP real.** A ATENA foi testada de ponta a ponta com um CLP Altus
+  Nexto Xpress XP340, fazendo MQTT direto pela biblioteca do próprio fabricante: primeiro
+  com um broker local sem criptografia, depois com um broker na nuvem usando TLS 1.2.
+  Sensor, cilindro, comando e status do CLP funcionaram nos dois cenários, e o comando
+  pela ATENA acionou o cilindro real.
+- Autoridade certificadora própria (RSA 2048, TLS 1.2) no lugar de certificado público,
+  porque o firmware do CLP não lida bem com as cadeias de certificado mais novas — com
+  script de geração e de verificação da cadeia.
+- O principal obstáculo do teste não era o programa: o firewall de um antivírus no PC
+  descartava a tentativa de conexão do CLP antes de ela chegar ao broker. Foi descoberto
+  capturando os pacotes da rede e ficou documentado no roteiro de teste, junto com os
+  outros pontos que costumam travar a primeira conexão.
+- Bancada atualizada: cilindro Festo ESNU-20-50-P-A (simples ação, curso de 50 mm) e
+  válvula Festo MFH-3-1/8, com o novo modelo 3D e o memorial de cálculo refeito.
+
+## 2026-10-05
+
+- Novo template de programa para o CLP (conexão MQTT, tópicos de sensores, comando do
+  cilindro e status online/offline), com um roteiro de teste em etapas que separa
+  "problema de rede/certificado" de "problema no programa".
+- Diagramas do TCC redesenhados e corrigidos para bater com o código atual:
+  arquitetura, fluxo por voz, latência, funcionamento completo e mapeamento pelo
+  modelo de referência RAMI 4.0.
+
+## 2026-09-28
+
+- **Gêmeo físico.** A animação do cilindro 3D deixou de usar uma "velocidade" inventada
+  e passou a seguir uma equação de movimento com o tempo de curso real do atuador. A
+  ATENA compara o tempo que o movimento *deveria* levar com o tempo medido entre as
+  leituras reais e avisa — por chat, voz e telemetria, com proposta de chamado — quando
+  o atuador foge do previsto, o que pode indicar desgaste, vazamento ou atrito. A IA
+  tem uma instrução própria para esse tipo de aviso, para não confundi-lo com um padrão
+  estatístico do sinal.
+- Peças 3D agora mantêm as cores reais do desenho original por face (corpo, anel,
+  faixa...), em vez de uma cor única por peça. O alerta vermelho/verde continua
+  funcionando por cima.
+- Janela de Conexão: fechar pelo X agora pergunta se deve salvar, o painel de
+  mapeamento abre já numa peça de verdade, e renomear uma peça passou a persistir ao
+  salvar e reabrir o projeto.
+- Corrigido um erro perigoso no chamado de manutenção: se dois avisos se sobrepusessem,
+  a pergunta "Deseja que eu abra um chamado?" repetia para o evento novo mas se referia
+  ao chamado antigo — um "sim" do operador confirmaria o chamado errado.
+
+## 2026-08-31
+
+- **Provas práticas de qualificação**, com os dados guardados no projeto:
+  - *Loop fechado:* a ATENA lê o sensor, publica o comando e confirma que o atuador
+    chegou ao valor esperado, repetido várias vezes nos dois sentidos.
+  - *Injeção de falha:* mede em quanto tempo a ATENA percebe uma falha provocada,
+    comparada ao tempo de um operador humano observando.
+  - *Latência:* medição do tempo entre a chegada de uma leitura e a avaliação do alerta
+    (mediana de cerca de 17 ms em 33 medições).
+  - *Base simbólica e prognóstico:* padrão de sensor associado a causas prováveis, e
+    estimativa de quanto tempo falta até um sinal cruzar o limite configurado.
+- Cada peça fechada passa a publicar seu estado automaticamente, fechando a malha MQTT
+  com o equipamento.
+- Suíte de testes automatizados em 271 testes, todos passando, com relatório gerado.
+- Pastas reorganizadas: modelos 3D e projetos de exemplo agora têm diretórios próprios.
+
 ## 2026-08-27
 
 - A palavra de ativação ("ATENA") e os comandos já cadastrados no projeto agora são
@@ -19,6 +80,10 @@ quem quiser acompanhar de fora.
   mudo" antes do próprio bipe, o que ia contra o propósito de um aviso instantâneo.
   Agora ele toca na hora em que o alerta é percebido, em paralelo com a análise sendo
   gerada. A fala em si não ficou mais rápida — só o bipe parou de esperar por ela.
+- Novo fluxo de **chamado de manutenção**: a IA (ou um alerta) pode propor abrir um
+  chamado, e ele só é aberto depois da mesma confirmação sim/não usada nos comandos.
+  Também corrigido o filtro de manuais, que puxava o datasheet errado porque palavras
+  curtas ("temp") batiam dentro de outras ("temperature"); agora exige palavra inteira.
 - Ainda não validado com uso real: só o roteamento da lógica foi testado, não a
   precisão do reconhecimento de voz local em ambiente com ruído de fábrica, sotaque ou
   microfone mais distante — planejado pra essa semana.

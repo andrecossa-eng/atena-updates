@@ -27,6 +27,11 @@ TCP — basta trocar o projeto configurado.
   publicado no equipamento sem o operador confirmar explicitamente.
 - **Alertas proativos** — a ATENA percebe sozinha quando um sensor sai da faixa
   configurada e avisa, sem precisar ser perguntada.
+- **Gêmeo físico e diagnóstico** — compara o movimento real do atuador com o previsto
+  por uma equação de movimento e avisa sobre desvios (desgaste, vazamento, atrito),
+  com base de causas prováveis e prognóstico de quando um sinal cruzará o limite.
+- **Validado em CLP real** — testado de ponta a ponta com um CLP Altus Nexto Xpress
+  XP340 via MQTT com TLS 1.2.
 - **Viewer 3D** do equipamento, com múltiplos objetos e ferramentas de manipulação.
 - **Configurável por projeto** — tópicos MQTT, comandos e modelos 3D não são fixos no
   código.
