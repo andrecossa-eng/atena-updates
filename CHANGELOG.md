@@ -4,6 +4,33 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-10-09
+
+- **Limites físicos nos parâmetros do cilindro.** Curso, tempo de curso, diâmetros do
+  êmbolo e da haste, pressão, vazão da válvula e massa móvel deixaram de aceitar
+  qualquer número: um curso de 1 km, por exemplo, agora é recusado, e a faixa
+  permitida aparece ao lado de cada campo. A calculadora de tempo de curso segue as
+  mesmas regras e confere que a haste seja mais fina que o êmbolo. O ajuste veio de uma
+  observação feita na reunião de acompanhamento.
+- Projeto do CLP com servidor de símbolos Modbus e dois projetos de exemplo novos da
+  ATENA (um para MQTT, outro para Modbus TCP por Ethernet).
+- Voz: o microfone de entrada pode ser escolhido por variável de ambiente (evita que o
+  fone Bluetooth caia no modo headset, com áudio pior, assim que a ATENA abre o
+  microfone), e foi corrigido um erro ao iniciar a escuta.
+- **Protótipo de uma interface nova**, feita em PySide6/Qt, com tema claro e visual mais
+  limpo. Reaproveita o mesmo núcleo do aplicativo atual (MQTT e Modbus TCP, IA, voz,
+  alertas e projetos), só a janela muda:
+  - viewer 3D com piso de estúdio, cubo de orientação clicável e as ferramentas de
+    mover, rotacionar, rotação exata, alinhar por faces, isolar e desfazer/refazer;
+  - telas próprias de Comunicação (conexão, vínculos, comandos, alertas, registradores
+    e telemetria) e de Manutenção (histórico, ordem de serviço e relatório);
+  - assistente em balões de conversa, com a mesma voz, IA e alertas proativos.
+  Foi testado contra um simulador de CLP por Modbus TCP e com chamadas reais à IA. Está
+  em avaliação: o aplicativo atual continua sendo o principal.
+- Interface atual: o viewer vazio agora mostra um convite em vez de uma linha cinza, o
+  nome de quem fala no chat ganhou cor e o aviso de projeto "não salvo" ficou neutro
+  (um projeto novo ainda sem arquivo não é um erro).
+
 ## 2026-10-08
 
 - **Comandos cadastrados agora são 100% locais**, sem IA e sem nuvem. Digitar no chat o
