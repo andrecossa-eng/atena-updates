@@ -4,6 +4,28 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-10-13
+
+- **A interface nova, em PySide6/Qt, passou a ser a padrão.** O que era um protótipo em
+  avaliação agora é a janela que abre com `python main.py`. A interface anterior
+  (CustomTkinter) continua disponível com `python main.py --classico`; as duas usam o
+  mesmo núcleo (MQTT e Modbus TCP, IA, voz, alertas e projetos).
+- **Quatro temas**, em Arquivo > Tema: Claro, Escuro, Roxo e Cinza. A troca é imediata
+  (inclui o fundo, o piso e o cubo de orientação do viewer 3D) e a escolha fica salva
+  para a próxima abertura.
+- A ATENA agora **abre em tela cheia** (maximizada; F11 alterna a tela cheia sem
+  bordas). O "Pronto" e a bolinha verde do rodapé saíram: o espaço só mostra avisos
+  passageiros, como "Projeto salvo.".
+- Viewer: os eixos XYZ do estado vazio ficaram no mesmo estilo dos eixos do viewer com
+  projeto carregado (e deixaram de aparecer cortados), e foi tomado cuidado para o 3D
+  não tentar redesenhar depois que a janela fecha.
+- **Pastas reorganizadas**: uma por interface (`classico/` e `qt/`, esta com seus testes
+  em `qt/testes/`), com o núcleo compartilhado em `core/`. Certificados públicos foram
+  para `certs/`, os desenhos de CAD para `docs/cad/` e os guias do CLP acompanharam os
+  novos caminhos.
+- Novo diagrama do fluxo das ferramentas do projeto (CLP, MasterTool, broker Mosquitto
+  na nuvem, Inventor e o modelo 3D do cilindro Festo) em `docs/diagramas/`.
+
 ## 2026-10-09
 
 - **Limites físicos nos parâmetros do cilindro.** Curso, tempo de curso, diâmetros do
