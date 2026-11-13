@@ -4,6 +4,42 @@ Registro de progresso do projeto ATENA, em ordem cronológica (mais recente prim
 Não é um changelog técnico linha a linha do código — é um resumo do que mudou, pra
 quem quiser acompanhar de fora.
 
+## 2026-10-29
+
+- **MQTT ignora tópicos de projetos antigos.** O cache em disco e a sessão persistente do
+  broker deixavam mensagens de projetos anteriores chegarem à ATENA; agora elas são
+  descartadas.
+- **IT-ATENA-001 (instrução de trabalho)** revisada com segurança operacional e
+  procedimento conforme as sugestões do Prof. Vitalli, e formatada em ABNT.
+- Documentos do TCC: pôster do Expo TCC revisado, descrição da bancada, fichas de
+  orientação e ata de 26/10 atualizada. Projeto do CLP com os arquivos do ambiente de
+  programação atualizados.
+
+## 2026-10-22
+
+- **Injeção de falha por software**: nova opção `--injecao software` e comparador
+  `--sw`, para testar a detecção de falhas sem mexer na bancada.
+- Evidências da bancada real (22/10) organizadas, com roteiro do laboratório atualizado
+  (loop fechado, injeção de falha e latência) e diagramas refeitos para a interface
+  `qt/` e para o desvio físico medido pelo CLP.
+- Documentação da evolução da ATENA (versões antigas, ambiente 3D no Blender e linha do
+  tempo) e prints do software, do programa do CLP no MasterTool e da nuvem (broker)
+  com dados sensíveis borrados ou fictícios.
+- Slides da banca final e briefing da apresentação.
+
+## 2026-10-14
+
+- **Todo comando agora exige confirmação do operador**: a opção "executar sem
+  confirmação" foi removida.
+- **CLP zera o comando MQTT ao perder a conexão**, e o loop fechado tolera queda de rede.
+- **Tempo de curso medido no CLP** (`PRG_TempoCurso`) e **desvio físico** (1,15x nos dois
+  lados, com referência de recuo) considerado na ATENA; correção de um crash.
+- Projeto ATENA para Modbus TCP com roteiro de teste, projeto do CLP para MQTT + Ethernet
+  e projeto local do CLP (`ProgramaTCC_XP340_Local`).
+- Testes com o sistema real (loop fechado no CLP, falha por contato oscilando) e
+  checklist dos pedidos do Prof. Vitalli (bancada, mangueiras, referências).
+- Descrição da bancada em Word e catálogo de componentes.
+
 ## 2026-10-13
 
 - **A interface nova, em PySide6/Qt, passou a ser a padrão.** O que era um protótipo em
